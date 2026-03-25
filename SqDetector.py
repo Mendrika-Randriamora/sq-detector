@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 import matplotlib.pyplot as plt
+from config import *
 
 def angle(p1, p2, p3):
     """Calcule l'angle entre 3 points"""
@@ -52,13 +53,13 @@ def count_rect(contours, img):
                 # print("angles = ", angles)
 
             # vérifier angles ~ 90°
-            if all(70 < a < 110 for a in angles):
+            if all(MIN_DEG < a < MAX_DEG for a in angles):
 
                 x, y, w, h = cv2.boundingRect(approx)
                 ratio = w / float(h)
                 # print("ratio = ", ratio)
 
-                if 0.5 < ratio < 1.5:  # tolérance large
+                if MIN_RAT < ratio < MAX_RAT:  # tolérance large
 
                     square_count += 1
                     squares_pts.append(cnt)
@@ -74,9 +75,7 @@ def contourDetection(img):
     blur = cv2.GaussianBlur(gray, (5,5), 0)
 
     # Find Canny edges
-    low_thresh = 30
-    ratio =3.0
-    edged = cv2.Canny(blur, low_thresh, low_thresh*ratio )
+    edged = cv2.Canny(blur, LOW_THRESH, LOW_THRESH*RATIO )
     # cv2.imshow('Canny', edged)
 
     # Finding Contours
