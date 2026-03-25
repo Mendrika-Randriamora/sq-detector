@@ -1,5 +1,5 @@
 # App configuration
-APP_NAME = "Sq Detector" 
+APP_NAME = "Sq Detector"
 APP_HOST = "0.0.0.0"
 APP_PORT = 5050
 UPLOAD_DIR = "uploads"
@@ -7,9 +7,12 @@ UPLOAD_DIR = "uploads"
 #=========================================
 
 # Configuration for detection
-# For Canny edges 
-LOW_THRESH = 30
+# For Canny edges
+LOW_THRESH = 50
 RATIO = 3.0
+
+# Minimum area accepted
+MIN_AREA_ACCEPTED = 200
 
 # For count rectangle in all outlines
 MIN_DEG = 70
