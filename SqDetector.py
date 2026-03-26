@@ -18,16 +18,16 @@ def count_rect(contours, img):
 
     for i, cnt in enumerate(contours):
         # print("ok contours")
-        print("-----------------------------------")
+        # print("-----------------------------------")
         area = cv2.contourArea(cnt)
-        print(f"area-{i} = {area}")
+        # print(f"area-{i} = {area}")
         if area < MIN_AREA_ACCEPTED:  # filtre bruit
             continue
 
         epsilon = 0.01 * cv2.arcLength(cnt, True)
         approx = cv2.approxPolyDP(cnt, epsilon, True)
-        print("epsilon = ", epsilon)
-        print("approx = ", approx)
+        # print("epsilon = ", epsilon)
+        # print("approx = ", approx)
         # print("convex contour = ", cv2.isContourConvex(approx))
 
         canvas = np.zeros_like(img)  # image noire même taille
@@ -52,14 +52,14 @@ def count_rect(contours, img):
                 p2 = pts[(i+1) % 4]
                 p3 = pts[(i+2) % 4]
                 angles.append(angle(p1, p2, p3))
-            print("angles = ", angles)
+            # print("angles = ", angles)
 
             # vérifier angles ~ 90°
             if all(MIN_DEG < a < MAX_DEG for a in angles):
 
                 x, y, w, h = cv2.boundingRect(approx)
                 ratio = w / float(h)
-                print("ratio = ", ratio)
+                # print("ratio = ", ratio)
 
                 if MIN_RAT < ratio < MAX_RAT:  # tolérance large
 
