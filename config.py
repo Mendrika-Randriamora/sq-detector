@@ -4,6 +4,8 @@ APP_HOST = "0.0.0.0"
 APP_PORT = 5050
 UPLOAD_DIR = "uploads"
 
+DB_NAME = "db.sqlite"
+
 #=========================================
 
 # Configuration for detection
