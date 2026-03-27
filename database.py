@@ -37,3 +37,12 @@ def get(limit=None):
         cursor.execute("SELECT * FROM data")
         
     return cursor.fetchall()
+    
+def get_by_id(id):
+    conn = connexion()
+    
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM data WHERE id=?", (id,))
+    
+    return cursor.fetchone()    

@@ -4,7 +4,7 @@ import numpy as np
 from SqDetector import contourDetection
 import cv2
 from config import *
-from database import upload_data
+from database import upload_data, get, get_by_id
 
 app = Flask(__name__)
 
@@ -25,7 +25,7 @@ def index():
         _, _, nbr = contourDetection(base_img)
         print("Nombre de carre est : ", nbr)
         data = {
-            "file": chemin,
+            "file": photo.filename,
             "value": nbr
         }
         print(data)
@@ -40,6 +40,13 @@ def upload():
     photo.save(os.path.join(UPLOAD_DIR, photo.filename))
     return 'Photo reçue !', 200
 
+@app.route('/pict')
+def pict():
+    return render_template("show.html", images=get())
+    
+@app.route('/pict/<int:id>')
+def detail(id):
+    return render_template("detail.html", image=get_by_id(id))
 
 if __name__ == "__main__":
     os.makedirs(UPLOAD_DIR, exist_ok=True)

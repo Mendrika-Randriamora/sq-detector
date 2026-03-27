@@ -2,7 +2,7 @@
 APP_NAME = "Sq Detector"
 APP_HOST = "0.0.0.0"
 APP_PORT = 5050
-UPLOAD_DIR = "uploads"
+UPLOAD_DIR = "static/uploads"
 
 DB_NAME = "db.sqlite"
 
