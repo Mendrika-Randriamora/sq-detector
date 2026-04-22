@@ -14,7 +14,7 @@ LOW_THRESH = 50
 RATIO = 3.0
 
 # Minimum area accepted
-MIN_AREA_ACCEPTED = 200
+MIN_AREA_ACCEPTED = 50
 
 # For count rectangle in all outlines
 MIN_DEG = 70

@@ -5,6 +5,7 @@ from SqDetector import contourDetection
 import cv2
 from config import *
 from database import upload_data, get, get_by_id
+from Serial import envoyer_message
 
 app = Flask(__name__)
 
@@ -30,6 +31,7 @@ def index():
         }
         print(data)
         upload_data(data)
+        envoyer_message(message=nbr)
         return render_template("index.html", succes="Enoye avec succes")
     else:
         return render_template("index.html")
